@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import api from '@/lib/api';
@@ -20,7 +20,7 @@ function EyeIcon({ open }: { open: boolean }) {
   );
 }
 
-export default function AuthPage() {
+function AuthPageInner() {
   const [tab, setTab] = useState<Tab>('login');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -203,5 +203,13 @@ export default function AuthPage() {
         </form>
       </div>
     </div>
+  );
+}
+
+export default function AuthPage() {
+  return (
+    <Suspense>
+      <AuthPageInner />
+    </Suspense>
   );
 }

@@ -185,7 +185,9 @@ All organization routes require `Authorization: Bearer <token>` header.
 { "message": "Invite accepted successfully", "organization_id": "<uuid>" }
 ```
 
-The invited user must have a registered account with the same email the invite was sent to. When they visit the link, they are automatically added to the organization.
+The invited user must register an account using the exact email they were invited with. When they visit the link while logged in with that email, they are automatically added to the organization.
+
+> **Note:** If you open the invite link while logged in as a different account, you will see a "Wrong Account" message indicating which email should accept the invite. Share the link with the intended recipient.
 
 ---
 
